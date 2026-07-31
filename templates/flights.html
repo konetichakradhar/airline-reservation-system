@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+Flights
+{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center mb-4">
+    ✈ Available Flights
+</h2>
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <table class="table table-hover table-bordered align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Travel Date</th>
+                    <th>Seats</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for flight in flights %}
+
+                <tr>
+
+                    <td>{{ flight[0] }}</td>
+
+                    <td>{{ flight[1] }}</td>
+
+                    <td>{{ flight[2] }}</td>
+
+                    <td>{{ flight[4] }}</td>
+
+                    <td>{{ flight[3] }}</td>
+
+                    <td>
+
+                        {% if flight[3] > 0 %}
+
+                            <span class="badge bg-success">
+                                Available
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-danger">
+                                Full
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if session.get('user') %}
+
+                            {% if flight[3] > 0 %}
+
+                            <a href="/book/{{ flight[0] }}"
+                               class="btn btn-success btn-sm">
+                                Book
+                            </a>
+
+                            {% else %}
+
+                            <button class="btn btn-secondary btn-sm" disabled>
+                                Full
+                            </button>
+
+                            {% endif %}
+
+                        {% else %}
+
+                        <a href="/login"
+                           class="btn btn-primary btn-sm">
+                            Login to Book
+                        </a>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

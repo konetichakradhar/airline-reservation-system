@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>History</h2>
+
+<table class="table table-striped">
+
+<tr>
+<th>ID</th>
+<th>Passenger</th>
+<th>Flight</th>
+<th>Route</th>
+<th>Time</th>
+<th>Status</th>
+</tr>
+
+{% for booking in history %}
+
+<tr>
+
+<td>{{ booking[0] }}</td>
+
+<td>{{ booking[1] }}</td>
+
+<td>{{ booking[2] }}</td>
+
+<td>{{ booking[3] }} → {{ booking[4] }}</td>
+
+<td>{{ booking[5] }}</td>
+<td>
+    {% if booking[6] == "Confirmed" %}
+        <span class="badge bg-success">
+            Confirmed
+        </span>
+    {% else %}
+        <span class="badge bg-danger">
+            Cancelled
+        </span>
+    {% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Booking Confirmation
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+
+    <div class="col-md-7">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white text-center">
+
+                <h2>✅ Booking Successful!</h2>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-success text-center">
+
+                    <h4>Your ticket has been booked successfully.</h4>
+
+                </div>
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th>Booking ID</th>
+                        <td>{{ booking_id }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Passenger Name</th>
+                        <td>{{ passenger }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Flight ID</th>
+                        <td>{{ flight[0] }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Source</th>
+                        <td>{{ flight[1] }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Destination</th>
+                        <td>{{ flight[2] }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Travel Date</th>
+                        <td>{{ flight[4] }}</td>
+                    </tr>
+
+                </table>
+
+                <div class="text-center mt-4">
+
+		<a href="/ticket/{{ booking_id }}" class="btn btn-				primary">
+    			Download Ticket
+		</a>
+
+                    <a href="/bookings"
+                       class="btn btn-success ms-2">
+                        🎫 My Bookings
+                    </a>
+
+                    <a href="/flights"
+                       class="btn btn-secondary ms-2">
+                        ✈ Book Another Flight
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

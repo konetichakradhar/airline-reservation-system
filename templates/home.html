@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+
+{% if session.get('user') %}
+
+    <a href="/flights" class="btn btn-primary btn-lg">
+        View Flights
+    </a>
+
+    <a href="/search" class="btn btn-dark btn-lg">
+        Search Flights
+    </a>
+
+{% else %}
+
+<div class="text-center mt-4">
+
+    <h1 class="display-4">
+        ✈ Airline Reservation System
+    </h1>
+
+    <p class="lead">
+        Welcome to the Airline Reservation System.<br>
+        Search flights, book tickets, and manage your reservations with ease.
+    </p>
+
+</div>
+
+    <a href="/login" class="btn btn-success btn-lg">
+        Login
+    </a>
+
+    <a href="/register" class="btn btn-outline-primary btn-lg">
+        Register
+    </a>
+
+{% endif %}
+
+</div>
+<hr>
+
+<div class="row text-center">
+
+    <div class="col-md-3">
+        <div class="card border-primary shadow">
+            <div class="card-body">
+	    <h2 class="fw-bold text-primary">{{ flights }}</h2>
+                	<p>Total Flights</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-success shadow">
+            <div class="card-body">
+                <h2 class="fw-bold text-success">{{ users }}</h2>
+                <p>Registered Users</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-warning shadow">
+            <div class="card-body">
+                <h2 class="fw-bold text-warning">{{ bookings }}</h2>
+                <p>Total Bookings</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-danger shadow">
+            <div class="card-body">
+                <h2 class="fw-bold text-danger">{{ seats }}</h2>
+                <p>Available Seats</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

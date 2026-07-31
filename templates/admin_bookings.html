@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Bookings
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4 text-center">
+    📋 All Bookings
+</h2>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Passenger</th>
+            <th>Flight ID</th>
+            <th>Username</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for booking in bookings %}
+
+        <tr>
+
+            <td>{{ booking[0] }}</td>
+            <td>{{ booking[1] }}</td>
+            <td>{{ booking[2] }}</td>
+            <td>{{ booking[3] }}</td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Flight
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Flight</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>Flight ID</label>
+        <input
+            type="text"
+            class="form-control"
+            value="{{ flight[0] }}"
+            readonly>
+    </div>
+
+    <div class="mb-3">
+        <label>Source</label>
+        <input
+            type="text"
+            name="source"
+            class="form-control"
+            value="{{ flight[1] }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Destination</label>
+        <input
+            type="text"
+            name="destination"
+            class="form-control"
+            value="{{ flight[2] }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Seats</label>
+        <input
+            type="number"
+            name="seats"
+            class="form-control"
+            value="{{ flight[3] }}"
+            required>
+    </div>
+
+    <button class="btn btn-primary">
+        Update Flight
+    </button>
+
+    <a href="/admin/flights" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

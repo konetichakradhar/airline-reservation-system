@@ -26,7 +26,12 @@ from reportlab.lib.styles import getSampleStyleSheet
 from database import get_booking_details
 
 app = Flask(__name__)
-app.secret_key = "airline_secret_key"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+app.secret_key = os.getenv("SECRET_KEY")
 
 @app.route('/')
 def home():
